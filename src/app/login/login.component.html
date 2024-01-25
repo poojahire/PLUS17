@@ -1,51 +1,64 @@
 
-   
-   <div class="login-container">
 
-    
+
+
+  <div class="login-container">
     <div class="login-form">
-        <div class="text-center" style="
-        text-align: center;
-    ">
-            <img src="assets/img/plus-logo.png" alt="PPL Licesing System" width=100px>
-          </div>
+      <div class="text-center" style="text-align: center;">
+        <img src="assets/img/plus-logo.png" alt="PPL Licesing System" width=100px>
+      </div>
       <h2>Sign in</h2>
-      <form *ngIf="!showResetForm" (ngSubmit)="login()" class="form-group">
+      <form *ngIf="!showResetForm" (ngSubmit)="login(); false" class="form-group">
+        <!-- Your existing login form fields -->
         <div class="form-group">
-          <label for="email" class="label">Email:</label>
-          <input type="text" id="email" [(ngModel)]="credentials.email" name="email" class="input" required>
-        </div>
-  
-        <div class="form-group">
-          <label for="password" class="label">Password:</label>
-          <input type="password" id="password" [(ngModel)]="credentials.password" name="password" class="input" required>
-        </div>
+            <label for="email" class="label">Email:</label>
+            <input type="text" id="email" [(ngModel)]="credentials.email" name="email" class="input" required>
+          </div>
+        
+          <div class="form-group">
+            <label for="password" class="label">Password:</label>
+      <input type="{{ showPassword ? 'text' : 'password' }}" id="password" [(ngModel)]="credentials.password" name="password" class="input" required>
+      <!-- Add the eye button for toggling visibility -->
+      <button mat-icon-button (click)="togglePasswordVisibility()">
+        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+          </div>
   
         <button type="submit" class="btn">Login</button>
-    <hr>
-    <div class="row" style="
-    text-align: center;
-">  
-        <div class="col-md-8">
-          <p class="text-inverse text-left m-b-0">© Copyright 2024</p>
-          <p class="text-inverse text-left"><b>PPL Licensing System</b></p>
+        <hr>
+        <div class="row" style="text-align: center;">
+          <div class="col-md-8">
+            <p class="text-inverse text-left m-b-0">© Copyright 2024</p>
+            <p class="text-inverse text-left"><b>PPL Licensing System</b></p>
+          </div>
+          <div class="col-md-4">
+            <img width=50px src="assets/img/ppl-logo.png" alt="small-logo.png">
+          </div>
         </div>
-        <div class="col-md-4">
-          <img width=50px src="assets/img/ppl-logo.png" alt="small-logo.png">
-        </div>
-      </div>
       </form>
-      <form *ngIf="showResetForm" (ngSubmit)="resetPassword()"  class="form-group">
+  
+      <!-- Add Forget Password button -->
+      <a *ngIf="!showResetForm"  (click)="showResetForm = true">Forget Password?</a>
+  
+      <!-- Reset Password form -->
+      <form *ngIf="showResetForm" (ngSubmit)="resetPassword(); false" class="form-group">
         <div class="form-group">
           <label for="resetEmail" class="label">Email:</label>
           <input type="email" id="resetEmail" [(ngModel)]="resetCredentials.email" name="resetEmail" class="input" required>
         </div>
   
-        <button type="submit" class="btn">Reset Password</button>
-      </form>
+        <!-- Additional fields for new password, confirmation, etc. -->
+        <!-- For simplicity, let's assume a single new password field -->
+        <div class="form-group">
+          <label for="newPassword" class="label">New Password:</label>
+          <input type="password" id="newPassword" [(ngModel)]="resetCredentials.newPassword" name="newPassword" class="input" required>
+        </div>
   
-      <a href="#" *ngIf="!showResetForm" (click)="showResetForm = true">Forgot Password?</a>
-      <a href="#" *ngIf="showResetForm" (click)="showResetForm = false">Go back to login</a>
+        <button type="submit" class="btn">Reset Password</button>
+  
+        <!-- Go back to login link -->
+        <a href="#" (click)="showResetForm = false">Go back to login</a>
+      </form>
     </div>
   </div>
   

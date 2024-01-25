@@ -1,3 +1,5 @@
+// nav-bar.component.ts
+
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -6,9 +8,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
-  @Output() toggleSideMenuEvent = new EventEmitter<void>();
+  // @Output() toggleSideMenuEvent = new EventEmitter<void>();
+ // nav-bar.component.ts
 
-  toggleSideMenu() {
-    this.toggleSideMenuEvent.emit();
-  }
+@Output() onToggleSideMenu = new EventEmitter<void>();
+
+toggleSideMenu() {
+  this.onToggleSideMenu.emit(); // Use onToggleSideMenu here
+}
+
 }

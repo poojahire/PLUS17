@@ -1,10 +1,31 @@
+// app.component.ts
+
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'plus17';
+  isLoggedIn: boolean;
+  isSideMenuVisible = false;
+
+  onToggleSideMenu() {
+    this.isSideMenuVisible = !this.isSideMenuVisible;
+  }
+
+  constructor(private authService: AuthService) {
+    // Check the authentication status when the component is initialized
+    this.isLoggedIn = this.authService.isAuthenticated();
+  }
+
+  // You might also want to subscribe to authentication changes if your AuthService provides an observable
+
+  // ngOnInit() {
+  //   this.authService.authStatus.subscribe(isLoggedIn => {
+  //     this.isLoggedIn = isLoggedIn;
+  //   });
+  // }
 }

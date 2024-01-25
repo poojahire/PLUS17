@@ -1,9 +1,10 @@
 .dashboard-container {
-    display: flex;
+    display: -webkit-box;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
     height: 100vh;
-  }
+}
+  
   
   .chart-container {
     width: 45%;

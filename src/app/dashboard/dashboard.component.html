@@ -1,6 +1,8 @@
 <div class="dashboard-container">
     <div class="chart-container">
+        <h2>Customers With Max Pending PIs</h2>
       <div style="display: block;">
+        
         <!-- <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas> -->
         <canvas baseChart
         [datasets]="barChartData"
@@ -9,13 +11,48 @@
         [legend]="barChartLegend"
         
         >
+       
+</canvas>
+<h2>Chart C</h2>
+
+<canvas baseChart
+[datasets]="barChartData"
+[labels]="barChartLabels"
+[options]="barChartOptions"
+[legend]="barChartLegend"
+
+>
 </canvas>
       </div>
     </div>
-    <div class="chart-container">
-      <div style="display: block;">
-        <ngx-charts-pie-chart [results]="pieChartData"  [legend]="true" [explodeSlices]="false" [doughnut]="false"></ngx-charts-pie-chart>
-      </div>
+<!-- #################################################################################################### -->
+<div class="chart-container">
+    <h2>Chart B</h2>
+
+    <div style="display: block;">
+      <!-- <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"></canvas> -->
+      <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      
+      >
+</canvas>
+<h2>Chart D</h2>
+
+<canvas baseChart
+[datasets]="barChartData"
+[labels]="barChartLabels"
+[options]="barChartOptions"
+[legend]="barChartLegend"
+
+>
+</canvas>
     </div>
+  </div>
+  <!-- ############################################################################################################ -->
+
+    
   </div>
   
